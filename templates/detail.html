@@ -1,0 +1,52 @@
+<!--
+Detail page:
+- Shows poster, key facts and plot
+- Includes "Add to Watchlist" button using data-action (caught via event delegation in JS)
+-->
+{% extends "base.html" %}
+{% block title %}{{ m.Title }} ({{ m.Year }}) – Cineseek{% endblock %}
+{% block meta %}
+  <!-- Social sharing previews -->
+  <meta property="og:title" content="{{ m.Title }} ({{ m.Year }})">
+  <meta property="og:description" content="{{ m.Plot }}">
+  <meta property="og:image" content="{{ m.Poster if m.Poster != 'N/A' else url_for('static', filename='logo/cineseek-icon-512.png', _external=True) }}">
+  <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+{% block content %}
+<section class="detail">
+  <div class="poster">
+    {% if m.Poster and m.Poster != 'N/A' %}
+      <img loading="lazy" src="{{ m.Poster }}" alt="{{ m.Title }} poster" width="300" height="450">
+    {% else %}
+      <img loading="lazy" src="{{ url_for('static', filename='img/no-poster.svg') }}" alt="No poster" width="300" height="450">
+    {% endif %}
+  </div>
+
+  <div class="meta">
+    <h1>{{ m.Title }} <span class="year">({{ m.Year }})</span></h1>
+    <p class="muted">{{ m.Type|capitalize }} • {{ m.Runtime }} • {{ m.Genre }}</p>
+    <p>{{ m.Plot }}</p>
+
+    <dl class="facts">
+      <dt>Director</dt><dd>{{ m.Director }}</dd>
+      <dt>Actors</dt><dd>{{ m.Actors }}</dd>
+      <dt>Language</dt><dd>{{ m.Language }}</dd>
+      <dt>Country</dt><dd>{{ m.Country }}</dd>
+      <dt>IMDB</dt><dd>{{ m.imdbRating }}/10 ({{ m.imdbVotes }} votes)</dd>
+    </dl>
+
+    <div class="actions">
+      <!-- Button uses data-action and type=button to avoid form submit/reload -->
+      <button class="btn" type="button"
+              data-action="add-watchlist"
+              data-id="{{ m.imdbID }}"
+              data-title="{{ m.Title }}">
+        Add to Watchlist
+      </button>
+
+      <a class="btn outline" href="{{ url_for('download_json', imdb_id=m.imdbID) }}">Download JSON</a>
+      <a class="btn" href="{{ url_for('index') }}">New search</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!--
+Watchlist page:
+- Pulls IDs from localStorage, then asks the server for minimal title info per item.
+- Renders the same pretty cards used elsewhere.
+-->
+{% extends "base.html" %}
+{% block title %}Your Watchlist – Cineseek{% endblock %}
+{% block content %}
+
+<section class="section">
+  <div class="section-header">
+    <h1 class="h1">Your Watchlist</h1>
+    <button class="btn outline" id="clearWatchlist" type="button">Clear all</button>
+  </div>
+
+  <p id="watchlistEmpty" class="muted" hidden>
+    Your watchlist is empty. Add titles from any detail page.
+  </p>
+
+  <div id="watchlistGrid" class="grid pretty-grid">
+    <!-- Filled by app.js -->
+  </div>
+</section>
+
+{% endblock %}

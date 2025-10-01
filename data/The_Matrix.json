@@ -1,0 +1,40 @@
+{
+  "Actors": "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss",
+  "Awards": "Won 4 Oscars. 42 wins & 52 nominations total",
+  "BoxOffice": "$172,076,928",
+  "Country": "United States, Australia",
+  "DVD": "N/A",
+  "Director": "Lana Wachowski, Lilly Wachowski",
+  "Genre": "Action, Sci-Fi",
+  "Language": "English",
+  "Metascore": "73",
+  "Plot": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
+  "Poster": "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_SX300.jpg",
+  "Production": "N/A",
+  "Rated": "R",
+  "Ratings": [
+    {
+      "Source": "Internet Movie Database",
+      "Value": "8.7/10"
+    },
+    {
+      "Source": "Rotten Tomatoes",
+      "Value": "83%"
+    },
+    {
+      "Source": "Metacritic",
+      "Value": "73/100"
+    }
+  ],
+  "Released": "31 Mar 1999",
+  "Response": "True",
+  "Runtime": "136 min",
+  "Title": "The Matrix",
+  "Type": "movie",
+  "Website": "N/A",
+  "Writer": "Lilly Wachowski, Lana Wachowski",
+  "Year": "1999",
+  "imdbID": "tt0133093",
+  "imdbRating": "8.7",
+  "imdbVotes": "2,187,692"
+}

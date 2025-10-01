@@ -1,0 +1,47 @@
+<!--
+Homepage:
+- Spotlight (hero) with blurred poster background and CTA to details
+- Quick genre chips -> change 'seed' for Discover API
+- Discover grid (pretty cards)
+-->
+{% extends "base.html" %}
+{% block title %}Cineseek – Discover{% endblock %}
+{% block content %}
+
+<!-- Spotlight (Hero) -->
+<section class="spotlight" id="spotlight" aria-live="polite">
+  <div class="spotlight-bg" id="spotlightBg"></div>
+  <div class="spotlight-content">
+    <h2 class="spotlight-title" id="spotlightTitle">Loading…</h2>
+    <p class="spotlight-meta" id="spotlightMeta"></p>
+    <p class="spotlight-plot" id="spotlightPlot"></p>
+    <a class="btn" id="spotlightBtn" href="#">View details</a>
+  </div>
+</section>
+
+<!-- Quick genre chips -->
+<section class="section">
+  <div class="chips" id="chips">
+    <button class="chip is-active" data-seed="">All</button>
+    <button class="chip" data-seed="action">Action</button>
+    <button class="chip" data-seed="comedy">Comedy</button>
+    <button class="chip" data-seed="drama">Drama</button>
+    <button class="chip" data-seed="sci-fi">Sci-Fi</button>
+    <button class="chip" data-seed="romance">Romance</button>
+    <button class="chip" data-seed="crime">Crime</button>
+    <button class="chip" data-seed="adventure">Adventure</button>
+    <button class="chip" data-seed="horror">Horror</button>
+  </div>
+</section>
+
+<!-- Discover grid -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="h1">Discover</h2>
+    <button class="btn outline" id="refreshDiscover" type="button">Shuffle</button>
+  </div>
+  <div id="discoverGrid" class="grid pretty-grid skeleton">
+    <!-- Filled by app.js -->
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,11 @@
+# Python/Flask artifacts
+venv/
+__pycache__/
+*.pyc
+
+# OS/editor
+.DS_Store
+
+# Local data & env
+data/cache/
+.env

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Cineseek{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='logo/cineseek-icon-192.png') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <meta name="theme-color" content="#0b0c10">
+  {% block meta %}{% endblock %}
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('{{ url_for("static", filename="sw.js") }}'));
+    }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('index') }}">Cineseek</a>
+    <div class="searchbar">
+      <input id="q" type="text" placeholder="Search movies or series…" autocomplete="off" aria-label="Search">
+      <div id="suggest" class="suggest" role="listbox" aria-expanded="false"></div>
+    </div>
+    <nav class="site-actions">
+      <a class="btn outline" href="{{ url_for('watchlist_page') }}">Watchlist</a>
+    </nav>
+
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <div id="watchlistPanel" class="drawer" hidden>
+    <h3>Watchlist</h3>
+    <ul id="watchlistItems"></ul>
+    <button class="btn" id="closeWatchlist">Close</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!--
+Results page:
+- Server renders a paginated grid backed by OMDb search 's'
+- Client can change Type and Year range (simple server-side filtering)
+-->
+{% extends "base.html" %}
+{% block title %}Results for “{{ q }}” – Cineseek{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <h2 class="h1">Results for “{{ q }}”</h2>
+
+    <!-- Filter form (submits to the same /results endpoint) -->
+    <form class="filters" method="get" action="{{ url_for('results') }}">
+      <input type="hidden" name="q" value="{{ q }}">
+      <label>Type:
+        <select name="type">
+          <option value="" {{ ''==ty and 'selected' or '' }}>Any</option>
+          <option value="movie" {{ 'movie'==ty and 'selected' or '' }}>Movie</option>
+          <option value="series" {{ 'series'==ty and 'selected' or '' }}>Series</option>
+        </select>
+      </label>
+      <label>Year:
+        <input type="number" name="ymin" placeholder="min" value="{{ ymin or '' }}" style="width:6em">
+        <input type="number" name="ymax" placeholder="max" value="{{ ymax or '' }}" style="width:6em">
+      </label>
+      <button class="btn" type="submit">Apply</button>
+    </form>
+  </div>
+
+  {% if items %}
+    <div class="grid">
+      {% for it in items %}
+        <a class="card pretty" href="{{ url_for('title_page', imdb_id=it.imdbID) }}">
+          <div class="poster">
+            {% if it.Poster %}
+              <img loading="lazy" src="{{ it.Poster }}" alt="{{ it.Title }} poster" width="360" height="540">
+            {% else %}
+              <img loading="lazy" src="{{ url_for('static', filename='img/no-poster.svg') }}" alt="No poster" width="360" height="540">
+            {% endif %}
+            <div class="poster-fade"></div>
+          </div>
+          <div class="titleline">
+            <span class="t">{{ it.Title }}</span>
+            <span class="y">{{ it.Year }}</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    <!-- Pager -->
+    <nav class="pager">
+      {% if page > 1 %}
+        <a class="btn outline" href="{{ url_for('results', q=q, page=page-1, type=ty, ymin=ymin, ymax=ymax) }}">← Prev</a>
+      {% endif %}
+      <span class="muted">Page {{ page }} / {{ pages }} ({{ total }} results)</span>
+      {% if page < pages %}
+        <a class="btn outline" href="{{ url_for('results', q=q, page=page+1, type=ty, ymin=ymin, ymax=ymax) }}">Next →</a>
+      {% endif %}
+    </nav>
+  {% else %}
+    <p class="muted">No results. Try different filters.</p>
+  {% endif %}
+</section>
+{% endblock %}

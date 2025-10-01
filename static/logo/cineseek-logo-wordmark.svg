@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 256" fill="none">
+  <title>cineseek wordmark</title>
+  <g stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="112" cy="112" r="80"/>
+    <line x1="164" y1="164" x2="224" y2="224"/>
+  </g>
+  <g fill="currentColor">
+    <circle cx="86" cy="86" r="12"/>
+    <circle cx="138" cy="86" r="12"/>
+    <circle cx="86" cy="138" r="12"/>
+    <circle cx="138" cy="138" r="12"/>
+  </g>
+  <text x="268" y="156" font-size="132" font-family="Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" letter-spacing="1">cineseek</text>
+</svg>
